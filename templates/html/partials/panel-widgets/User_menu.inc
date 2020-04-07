@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2015-2019 City of Bloomington, Indiana
+ * @copyright 2015-2020 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 ?>
@@ -8,11 +8,10 @@
     <?php
         if (isset($_SESSION['USER'])) {
             $name = self::escape("{$_SESSION['USER']->firstname} {$_SESSION['USER']->lastname}");
-            echo "<header><h1>$name</h1></header>";
+            echo "<header><h2>$name</h2></header>";
 
             $links = [
                 ['url'=>parent::generateUri('login.logout' ), 'label'=>$this->_('logout'    )],
-                ['url'=>parent::generateUri('login.current'), 'label'=>$this->_('my_account')]
             ];
             foreach ($links as $l) {
                 echo "<a href=\"$l[url]\">$l[label]</a>";

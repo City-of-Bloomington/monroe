@@ -5,6 +5,7 @@
         "aura/router": "~2",
         "aura/sqlquery": "~2",
         "jasig/phpcas": "~1",
+        "guzzlehttp/guzzle":               "@stable",
         "graylog2/gelf-php":               "@stable",
         "laminas/laminas-log":             "@stable",
         "laminas/laminas-permissions-acl": "@stable"

@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-APPNAME := account_tracker
+APPNAME := monroe
 
 SASS := $(shell command -v sassc 2> /dev/null)
 MSGFMT := $(shell command -v msgfmt 2> /dev/null)

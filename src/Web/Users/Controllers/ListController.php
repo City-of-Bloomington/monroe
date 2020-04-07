@@ -17,7 +17,7 @@ class ListController extends Controller
 {
     public function __invoke(array $params): View
     {
-        global $ZEND_ACL;
+        global $ACL;
         $search   = $this->di->get('Domain\Users\UseCases\Search\Command');
         $auth     = $this->di->get('Web\Authentication\AuthenticationService');
 		$page     =  !empty($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -28,7 +28,7 @@ class ListController extends Controller
                               $response,
                               parent::ITEMS_PER_PAGE,
                               $page,
-                              $ZEND_ACL->getRoles(),
+                              $ACL->getRoles(),
                               $auth->getAuthenticationMethods());
     }
 }

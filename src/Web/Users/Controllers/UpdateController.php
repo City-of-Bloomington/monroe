@@ -56,11 +56,11 @@ class UpdateController extends Controller
             ]);
         }
 
-        global $ZEND_ACL;
+        global $ACL;
         $auth = $this->di->get('Web\Authentication\AuthenticationService');
         return new UpdateView($request,
                               isset($response) ? $response : null,
-                              $ZEND_ACL->getRoles(),
+                              $ACL->getRoles(),
                               $auth->getAuthenticationMethods());
     }
 }

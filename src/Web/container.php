@@ -31,7 +31,7 @@ foreach ($repos as $t) {
 // Services
 //---------------------------------------------------------
 $DI->params[ 'Web\Authentication\AuthenticationService']['repository'] = $DI->lazyGet('Domain\Users\DataStorage\UsersRepository');
-$DI->params[ 'Web\Authentication\AuthenticationService']['config'    ] = $DIRECTORY_CONFIG;
+$DI->params[ 'Web\Authentication\AuthenticationService']['config'    ] = $LDAP;
 $DI->set(    'Web\Authentication\AuthenticationService',
 $DI->lazyNew('Web\Authentication\AuthenticationService'));
 

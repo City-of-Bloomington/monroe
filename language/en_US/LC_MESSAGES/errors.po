@@ -17,3 +17,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: en_US\n"
 
+msgid "notLoggedIn"
+msgstr "You are not logged into this site anymore."
+
+msgid "users/unknownUser"
+msgstr "You do not have a user account for this application"
+

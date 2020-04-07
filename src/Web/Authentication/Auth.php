@@ -37,13 +37,13 @@ class Auth
 
     public static function isAuthorized(string $routeName, ?User $user): bool
     {
-        global $ZEND_ACL;
+        global $ACL;
 
         list($resource, $permission) = explode('.', $routeName);
         $role = $user ? $user->role : 'Anonymous';
 
-        return $ZEND_ACL->hasResource($resource)
-            && $ZEND_ACL->isAllowed($role, $resource, $permission);
+        return $ACL->hasResource($resource)
+            && $ACL->isAllowed($role, $resource, $permission);
     }
 
     public static function isHMACRequest(RequestInterface $request): bool

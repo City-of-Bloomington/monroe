@@ -5,7 +5,7 @@
  */
 declare (strict_types=1);
 
-define('APPLICATION_HOME', __DIR__);
+define('APPLICATION_HOME', realpath(__DIR__.'/../../'));
 define('VERSION', trim(file_get_contents(APPLICATION_HOME.'/VERSION')));
 
 /**

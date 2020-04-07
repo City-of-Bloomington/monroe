@@ -21,7 +21,7 @@ class Database
     private static function connectDefault(array $conf): \PDO
     {
         try {
-            $pdo = new \PDO("$conf[driver]:dbname=$conf[dbname];host=$conf[host]", $conf['username'], $conf['password'], $conf['options']);
+            $pdo = new \PDO("$conf[driver]:dbname=$conf[name];host=$conf[host]", $conf['user'], $conf['pass'], $conf['opts']);
         }
         catch (\Exception $e) {
             die("Could not connect to default database server\n");
