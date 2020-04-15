@@ -16,6 +16,7 @@ $DI->set('db.default', \Web\Database::getConnection('default', $DATABASES['defau
 //---------------------------------------------------------
 $repos = [
     'People', 'Users',
+    'OperationsLog'
 ];
 foreach ($repos as $t) {
     $DI->params[ "Web\\$t\\Pdo{$t}Repository"]["pdo"] = $DI->lazyGet('db.default');
@@ -43,6 +44,13 @@ foreach(['Info', 'Load', 'Search', 'Update'] as $a) {
     $DI->params[ "Domain\\People\\UseCases\\$a\\Command"]['repository'] = $DI->lazyGet('Domain\People\DataStorage\PeopleRepository');
     $DI->set(    "Domain\\People\\UseCases\\$a\\Command",
     $DI->lazyNew("Domain\\People\\UseCases\\$a\\Command"));
+}
+
+// Operations Log
+foreach(['Find'] as $a) {
+    $DI->params[ "Domain\\OperationsLog\\UseCases\\$a\\Command"]['repository'] = $DI->lazyGet('Domain\OperationsLog\DataStorage\OperationsLogRepository');
+    $DI->set(    "Domain\\OperationsLog\\UseCases\\$a\\Command",
+    $DI->lazyNew("Domain\\OperationsLog\\UseCases\\$a\\Command"));
 }
 
 // Users

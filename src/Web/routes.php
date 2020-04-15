@@ -9,7 +9,7 @@ $rf = new \Aura\Router\RouterFactory(BASE_URI);
 $ROUTES = $rf->newInstance();
 $ROUTES->setTokens(['id' => '\d+']);
 
-$ROUTES->add('home.index',    '/'       )->setValues(['controller' => 'Web\HomeController']);
+$ROUTES->add('home.index',    '/'       )->setValues(['controller' => 'Web\OperationsLog\Controllers\ListController']);
 $ROUTES->add('login.login',   '/login'  )->setValues(['controller' => 'Web\Authentication\LoginController']);
 $ROUTES->add('login.logout',  '/logout' )->setValues(['controller' => 'Web\Authentication\LogoutController']);
 
