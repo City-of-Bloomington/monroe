@@ -18,3 +18,9 @@
 .modified {
     th, td { background-color: $color-alert; }
 }
+
+#logtable {
+    th { text-align: center; }
+    th, td { border: 1px solid black; }
+    .subheadings th  { writing-mode: vertical-rl; text-orientation: mixed; }
+}

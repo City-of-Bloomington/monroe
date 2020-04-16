@@ -65,13 +65,13 @@ class LogEntry
 
     public $comments;
 
-    public function construct(?array $data=null)
+    public function __construct(?array $data=null)
     {
         if ($data) {
             foreach ($this as $k => $v) {
                 switch ($k) {
                     case 'logtime':
-                        $this->logtime = new \DateTime($v);
+                        $this->$k = new \DateTime($data[$k]);
                     break;
 
                     case 'weather_precipitation':
@@ -107,7 +107,7 @@ class LogEntry
                     case 'uv_254_box':
                     case 'uv_254_finish':
                     case 'bench_ntu':
-                        $this->$k = (float)$v;
+                        $this->$k = (float)$data[$k];
                     break;
 
                     case 'weather_temperature':
@@ -121,11 +121,11 @@ class LogEntry
                     case 'hardness_finish':
                     case 'alkalinity_raw':
                     case 'alkalinity_finish':
-                        $this->$k = (int)$v;
+                        $this->$k = (int)$data[$k];
                     break;
 
                     default:
-                        $this->$k = $v;
+                        $this->$k = $data[$k];
                 }
             }
         }

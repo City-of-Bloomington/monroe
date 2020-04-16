@@ -28,7 +28,8 @@ class Search extends Template
             'entries'      => $response->entries,
             'total'        => $response->total,
             'itemsPerPage' => $request ->itemsPerPage,
-            'currentPage'  => $request ->currentPage
+            'currentPage'  => $request ->currentPage,
+            'date'         => $request ->date
         ];
 
         $this->blocks = [
