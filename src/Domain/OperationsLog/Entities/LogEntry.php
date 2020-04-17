@@ -107,7 +107,9 @@ class LogEntry
                     case 'uv_254_box':
                     case 'uv_254_finish':
                     case 'bench_ntu':
-                        $this->$k = (float)$data[$k];
+                        if ($data[$k] != '') {
+                            $this->$k = (float)$data[$k];
+                        }
                     break;
 
                     case 'weather_temperature':
@@ -121,7 +123,9 @@ class LogEntry
                     case 'hardness_finish':
                     case 'alkalinity_raw':
                     case 'alkalinity_finish':
-                        $this->$k = (int)$data[$k];
+                        if ($data[$k] != '') {
+                            $this->$k = (int)$data[$k];
+                        }
                     break;
 
                     default:

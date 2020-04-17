@@ -12,34 +12,39 @@ declare (strict_types=1);
 $h = $this->template->getHelper('field');
 ?>
 <section>
-    <form method="get">
-        <fieldset>
-            <?php
-                echo $h->field([
-                    'name'  => 'date',
-                    'id'    => 'date',
-                    'type'  => 'date',
-                    'value' => $this->date
-                ]);
-            ?>
-            <button type="submit">Submit</button>
-        </fieldset>
-    </form>
-</section>
-<?php
-if ($this->entries) {
-    $this->_include('operations/entries.inc');
-}
-else {
-    echo sprintf($this->_('no_results', 'messages'), 'entries');
-}
+    <header>
+        <h1>Operations</h1>
+        <form method="get">
+            <fieldset>
+                <?php
+                    echo $h->field([
+                        'name'  => 'date',
+                        'id'    => 'date',
+                        'type'  => 'date',
+                        'value' => $this->date
+                    ]);
+                ?>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
 
-if ($this->total > $this->itemsPerPage) {
-    $block = new Block('pageNavigation.inc', [
-        'paginator' => new Paginator(
-            $this->total,
-            $this->itemsPerPage,
-            $this->currentPage
-    )]);
-    echo $block->render('html', $this->template);
-}
+    </header>
+    <?php
+        if ($this->entries) {
+            $this->_include('operations/entries.inc');
+        }
+        else {
+            echo sprintf($this->_('no_results', 'messages'), 'entries');
+        }
+
+        if ($this->total > $this->itemsPerPage) {
+            $block = new Block('pageNavigation.inc', [
+                'paginator' => new Paginator(
+                    $this->total,
+                    $this->itemsPerPage,
+                    $this->currentPage
+            )]);
+            echo $block->render('html', $this->template);
+        }
+    ?>
+</section>
