@@ -9,6 +9,8 @@
  * @param DateTime  $this->date
  */
 declare (strict_types=1);
+use Web\Block;
+
 $h = $this->template->getHelper('field');
 ?>
 <section>
@@ -27,7 +29,16 @@ $h = $this->template->getHelper('field');
                 <button type="submit">Submit</button>
             </fieldset>
         </form>
-
+        <?php
+            if (parent::isAllowed('operationsLog', 'add')) {
+                $block = new Block('toolbox.inc', ['actions' => [
+                    'add' => ['uri'   => parent::generateUri('operationsLog.add'),
+                              'class' => 'add',
+                              'help'  => 'Add a new log entry']
+                ]]);
+                echo $block->render('html', $this->template);
+            }
+        ?>
     </header>
     <?php
         if ($this->entries) {

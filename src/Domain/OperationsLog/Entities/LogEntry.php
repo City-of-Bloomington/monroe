@@ -9,6 +9,7 @@ namespace Domain\OperationsLog\Entities;
 
 class LogEntry
 {
+    public $id;
     public $logtime;
 
     public $weather_temperature;

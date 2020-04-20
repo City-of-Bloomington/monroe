@@ -27,6 +27,9 @@ foreach ($repos as $t) {
 //---------------------------------------------------------
 // Metadata providers
 //---------------------------------------------------------
+$DI->params[ 'Domain\OperationsLog\Metadata']['repository'] = $DI->lazyGet('Domain\OperationsLog\DataStorage\OperationsLogRepository');
+$DI->set(    'Domain\OperationsLog\Metadata',
+$DI->lazyNew('Domain\OperationsLog\Metadata'));
 
 //---------------------------------------------------------
 // Services

@@ -36,6 +36,19 @@ class PdoOperationsLogRepository extends PdoRepository implements OperationsLogR
         return $select;
     }
 
+    //---------------------------------------------------------------
+    // Read Functions
+    //---------------------------------------------------------------
+    public function load(int $id): LogEntry
+    {
+        $select = $this->baseSelect()->where('id=?', $id);
+        $result = $this->performSelect($select);
+        if (count($result['rows'])) {
+            return self::hydrate($result['rows'][0]);
+        }
+        throw new \Exception('operationsLog/unknown');
+    }
+
     public function find(FindRequest $req): array
     {
         $select = $this->baseSelect();
@@ -47,5 +60,29 @@ class PdoOperationsLogRepository extends PdoRepository implements OperationsLogR
                                              self::$DEFAULT_SORT,
                                              $req->itemsPerPage,
                                              $req->currentPage);
+    }
+
+    //---------------------------------------------------------------
+    // Write Functions
+    //---------------------------------------------------------------
+    public function save(LogEntry $logEntry): int
+    {
+        $data            = (array)$logEntry;
+        $data['logtime'] = $logEntry->logtime->format('Y-m-d H:00:00');
+        return parent::saveToTable($data, self::TABLE);
+    }
+
+    //---------------------------------------------------------------
+    // Metadata Functions
+    //---------------------------------------------------------------
+    public function maxLogTime(): ?\DateTime
+    {
+        $sql    = 'select max(logtime) as logtime from operations';
+        $query  = $this->pdo->query($sql);
+        $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+        if ($result) {
+            return new \DateTime($result[0]['logtime']);
+        }
+        return null;
     }
 }

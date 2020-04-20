@@ -26,3 +26,5 @@
     thead .time, tbody th { width:50px; }
     tbody tr:nth-child(odd) { background-color: $color-table-background; }
 }
+
+input[type="number"] { width:4em; }

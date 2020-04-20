@@ -9,9 +9,16 @@ $rf = new \Aura\Router\RouterFactory(BASE_URI);
 $ROUTES = $rf->newInstance();
 $ROUTES->setTokens(['id' => '\d+']);
 
-$ROUTES->add('home.index',    '/'       )->setValues(['controller' => 'Web\OperationsLog\Controllers\ListController']);
+$ROUTES->add('home.index',    '/'       )->setValues(['controller' => 'Web\HomeController']);
 $ROUTES->add('login.login',   '/login'  )->setValues(['controller' => 'Web\Authentication\LoginController']);
 $ROUTES->add('login.logout',  '/logout' )->setValues(['controller' => 'Web\Authentication\LogoutController']);
+
+$ROUTES->attach('operationsLog', '/operations', function ($r) {
+    $r->add('add',    '/add')         ->setValues(['controller' => 'Web\OperationsLog\Controllers\AddController' ]);
+    $r->add('index',  '')             ->setValues(['controller' => 'Web\OperationsLog\Controllers\ListController']);
+});
+$ROUTES->add('operationsLog.index', '/operations'  )->setValues(['controller' => 'Web\OperationsLog\Controllers\ListController']);
+
 
 $ROUTES->attach('people', '/people', function ($r) {
     $r->add('update', '/update{/id}') ->setValues(['controller' => 'Web\People\Controllers\UpdateController']);
