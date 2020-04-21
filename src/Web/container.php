@@ -50,7 +50,7 @@ foreach(['Info', 'Load', 'Search', 'Update'] as $a) {
 }
 
 // Operations Log
-foreach(['Find'] as $a) {
+foreach(['Add', 'Find'] as $a) {
     $DI->params[ "Domain\\OperationsLog\\UseCases\\$a\\Command"]['repository'] = $DI->lazyGet('Domain\OperationsLog\DataStorage\OperationsLogRepository');
     $DI->set(    "Domain\\OperationsLog\\UseCases\\$a\\Command",
     $DI->lazyNew("Domain\\OperationsLog\\UseCases\\$a\\Command"));

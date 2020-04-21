@@ -7,6 +7,7 @@ declare (strict_types=1);
 namespace Domain\OperationsLog\UseCases\Add;
 
 use Domain\OperationsLog\Entities\LogEntry;
+use Domain\OperationsLog\DataStorage\OperationsLogRepository;
 
 class Command
 {
@@ -23,7 +24,7 @@ class Command
 
         try {
             $id  = $this->repo->save($entry);
-            $new = $this->repo->load($id);
+            $new = $this->repo->loadById($id);
             return new Response($id, $new->logtime);
         }
         catch (\Exception $e) {
@@ -31,9 +32,19 @@ class Command
         }
     }
 
-    private validate(LogEntry $entry): array
+    private function validate(LogEntry $entry): array
     {
         $errors = [];
         if (!$entry->logtime) { $errors[] = 'missingTime'; }
+
+        try {
+            $duplicate = $this->repo->loadByLogTime($entry->logtime);
+            if ($duplicate) {
+                $errors[] = 'operations/duplicate';
+            }
+        }
+        catch (\Exception $e) { }
+
+        return $errors;
     }
 }

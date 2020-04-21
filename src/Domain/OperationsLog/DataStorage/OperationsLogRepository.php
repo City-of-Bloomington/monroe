@@ -13,7 +13,6 @@ interface OperationsLogRepository
 {
     // Read Functions
     public function find(FindRequest $request): array;
-    public function load(int $id): LogEntry;
 
     // Write Functions
     public function save(LogEntry $logEntry): int;

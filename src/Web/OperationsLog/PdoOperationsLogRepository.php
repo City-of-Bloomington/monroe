@@ -14,7 +14,9 @@ use Web\PdoRepository;
 
 class PdoOperationsLogRepository extends PdoRepository implements OperationsLogRepository
 {
-    const TABLE = 'operations';
+    const TABLE          = 'operations';
+    const LOGTIME_FORMAT = 'Y-m-d H:00:00';
+
     public static $DEFAULT_SORT = ['logtime'];
     public static function columns(): array
     {
@@ -36,17 +38,28 @@ class PdoOperationsLogRepository extends PdoRepository implements OperationsLogR
         return $select;
     }
 
-    //---------------------------------------------------------------
-    // Read Functions
-    //---------------------------------------------------------------
-    public function load(int $id): LogEntry
+    private function loadOneRow(SelectInterface $select): LogEntry
     {
-        $select = $this->baseSelect()->where('id=?', $id);
         $result = $this->performSelect($select);
         if (count($result['rows'])) {
             return self::hydrate($result['rows'][0]);
         }
         throw new \Exception('operationsLog/unknown');
+    }
+
+    //---------------------------------------------------------------
+    // Read Functions
+    //---------------------------------------------------------------
+    public function loadByLogTime(\DateTime $logtime): LogEntry
+    {
+        $select = $this->baseSelect()->where('logtime=?', $logtime->format(self::LOGTIME_FORMAT));
+        return $this->loadOneRow($select);
+    }
+
+    public function loadById(int $id): LogEntry
+    {
+        $select = $this->baseSelect()->where('id=?', $id);
+        return $this->loadOneRow($select);
     }
 
     public function find(FindRequest $req): array
@@ -68,7 +81,7 @@ class PdoOperationsLogRepository extends PdoRepository implements OperationsLogR
     public function save(LogEntry $logEntry): int
     {
         $data            = (array)$logEntry;
-        $data['logtime'] = $logEntry->logtime->format('Y-m-d H:00:00');
+        $data['logtime'] = $logEntry->logtime->format(self::LOGTIME_FORMAT);
         return parent::saveToTable($data, self::TABLE);
     }
 
