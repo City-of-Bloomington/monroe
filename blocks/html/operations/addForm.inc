@@ -90,7 +90,7 @@ $entry = $this->logEntry;
                     'label'   => 'Finish',
                     'type'    => 'number',
                     'value'   => $entry->turbidity_finish,
-                    'attr'    => ['step' => .1]
+                    'attr'    => ['step' => .01]
                 ]);
             ?>
         </fieldset>
@@ -310,7 +310,7 @@ $entry = $this->logEntry;
                     'label'   => 'Finish',
                     'type'    => 'number',
                     'value'   => $entry->fluoride_finish,
-                    'attr'    => ['step' => .1]
+                    'attr'    => ['step' => .01]
                 ]);
             ?>
         </fieldset>
@@ -331,6 +331,14 @@ $entry = $this->logEntry;
                     'label'   => 'Finish',
                     'type'    => 'number',
                     'value'   => $entry->hardness_finish,
+                    'attr'    => ['step' => .1]
+                ]);
+                echo $h->field([
+                    'name'    => 'stability',
+                    'id'      => 'stability',
+                    'label'   => 'Stability Index',
+                    'type'    => 'number',
+                    'value'   => $entry->stability,
                     'attr'    => ['step' => .1]
                 ]);
             ?>
@@ -402,20 +410,12 @@ $entry = $this->logEntry;
             <legend>UV 254</legend>
             <?php
                 echo $h->field([
-                    'name'    => 'stability',
-                    'id'      => 'stability',
-                    'label'   => 'Stability',
-                    'type'    => 'number',
-                    'value'   => $entry->stability,
-                    'attr'    => ['step' => .1]
-                ]);
-                echo $h->field([
                     'name'    => 'uv_254_raw',
                     'id'      => 'uv_254_raw',
                     'label'   => 'Raw',
                     'type'    => 'number',
                     'value'   => $entry->uv_254_raw,
-                    'attr'    => ['step' => .1]
+                    'attr'    => ['step' => .001]
                 ]);
                 echo $h->field([
                     'name'    => 'uv_254_box',
@@ -423,7 +423,7 @@ $entry = $this->logEntry;
                     'label'   => 'Box',
                     'type'    => 'number',
                     'value'   => $entry->uv_254_box,
-                    'attr'    => ['step' => .1]
+                    'attr'    => ['step' => .001]
                 ]);
                 echo $h->field([
                     'name'    => 'uv_254_finish',
@@ -431,7 +431,7 @@ $entry = $this->logEntry;
                     'label'   => 'Finish',
                     'type'    => 'number',
                     'value'   => $entry->uv_254_finish,
-                    'attr'    => ['step' => .1]
+                    'attr'    => ['step' => .001]
                 ]);
                 echo $h->field([
                     'name'    => 'bench_ntu',
@@ -439,7 +439,7 @@ $entry = $this->logEntry;
                     'label'   => 'Bench NTU',
                     'type'    => 'number',
                     'value'   => $entry->bench_ntu,
-                    'attr'    => ['step' => .1]
+                    'attr'    => ['step' => .01]
                 ]);
             ?>
         </fieldset>
