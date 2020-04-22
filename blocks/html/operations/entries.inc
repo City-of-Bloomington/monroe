@@ -54,7 +54,7 @@ declare (strict_types=1);
 
             <!-- Chlorine -->
             <th colspan="2">Basin</th>
-            <th colspan="2">Prelift</th>
+            <th colspan="2">Pre Filter</th>
             <th colspan="2">Filter</th>
             <th colspan="2">B Filter</th>
             <th colspan="2">Clrwll</th>
@@ -121,8 +121,8 @@ declare (strict_types=1);
                 <td>{$r->turbidity_finish      }</td>
                 <td>{$r->chlorine_basin_free   }</td>
                 <td>{$r->chlorine_basin_total  }</td>
-                <td>{$r->chlorine_prelift_free }</td>
-                <td>{$r->chlorine_prelift_total}</td>
+                <td>{$r->chlorine_prefilt_free }</td>
+                <td>{$r->chlorine_prefilt_total}</td>
                 <td>{$r->chlorine_filter_free  }</td>
                 <td>{$r->chlorine_filter_total }</td>
                 <td>{$r->chlorine_bfilt_free   }</td>

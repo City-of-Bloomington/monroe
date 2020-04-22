@@ -114,19 +114,19 @@ $entry = $this->logEntry;
                     'attr'    => ['step' => .1]
                 ]);
                 echo $h->field([
-                    'name'    => 'chlorine_prelift_free',
-                    'id'      => 'chlorine_prelift_free',
-                    'label'   => 'Prelift Free',
+                    'name'    => 'chlorine_prefilt_free',
+                    'id'      => 'chlorine_prefilt_free',
+                    'label'   => 'Pre Filter Free',
                     'type'    => 'number',
-                    'value'   => $entry->chlorine_prelift_free,
+                    'value'   => $entry->chlorine_prefilt_free,
                     'attr'    => ['step' => .1]
                 ]);
                 echo $h->field([
-                    'name'    => 'chlorine_prelift_total',
-                    'id'      => 'chlorine_prelift_total',
-                    'label'   => 'Prelift Total',
+                    'name'    => 'chlorine_prefilt_total',
+                    'id'      => 'chlorine_prefilt_total',
+                    'label'   => 'Pre Filter Total',
                     'type'    => 'number',
-                    'value'   => $entry->chlorine_prelift_total,
+                    'value'   => $entry->chlorine_prefilt_total,
                     'attr'    => ['step' => .1]
                 ]);
                 echo $h->field([
@@ -164,7 +164,7 @@ $entry = $this->logEntry;
                 echo $h->field([
                     'name'    => 'chlorine_clrwll_free',
                     'id'      => 'chlorine_clrwll_free',
-                    'label'   => 'clrwll Free',
+                    'label'   => 'Clear Well Free',
                     'type'    => 'number',
                     'value'   => $entry->chlorine_clrwll_free,
                     'attr'    => ['step' => .1]

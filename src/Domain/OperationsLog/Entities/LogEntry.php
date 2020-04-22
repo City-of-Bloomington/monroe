@@ -23,8 +23,8 @@ class LogEntry
 
     public $chlorine_basin_free;
     public $chlorine_basin_total;
-    public $chlorine_prelift_free;
-    public $chlorine_prelift_total;
+    public $chlorine_prefilt_free;
+    public $chlorine_prefilt_total;
     public $chlorine_filter_free;
     public $chlorine_filter_total;
     public $chlorine_bfilt_free;
