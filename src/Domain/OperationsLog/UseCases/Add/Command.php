@@ -35,7 +35,8 @@ class Command
     private function validate(LogEntry $entry): array
     {
         $errors = [];
-        if (!$entry->logtime) { $errors[] = 'missingTime'; }
+        if ( $entry->id     ) { $errors[] = 'invalidUpdate'; }
+        if (!$entry->logtime) { $errors[] = 'missingTime';   }
 
         try {
             $duplicate = $this->repo->loadByLogTime($entry->logtime);

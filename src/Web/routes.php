@@ -14,8 +14,9 @@ $ROUTES->add('login.login',   '/login'  )->setValues(['controller' => 'Web\Authe
 $ROUTES->add('login.logout',  '/logout' )->setValues(['controller' => 'Web\Authentication\LogoutController']);
 
 $ROUTES->attach('operationsLog', '/operations', function ($r) {
-    $r->add('add',    '/add')         ->setValues(['controller' => 'Web\OperationsLog\Controllers\AddController' ]);
-    $r->add('index',  '')             ->setValues(['controller' => 'Web\OperationsLog\Controllers\ListController']);
+    $r->add('add',    '/add')         ->setValues(['controller' => 'Web\OperationsLog\Controllers\AddController'   ]);
+    $r->add('view',   '/{id}')        ->setValues(['controller' => 'Web\OperationsLog\Controllers\ViewController'  ]);
+    $r->add('index',  '')             ->setValues(['controller' => 'Web\OperationsLog\Controllers\ListController'  ]);
 });
 $ROUTES->add('operationsLog.index', '/operations'  )->setValues(['controller' => 'Web\OperationsLog\Controllers\ListController']);
 

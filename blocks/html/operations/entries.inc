@@ -129,8 +129,10 @@ declare (strict_types=1);
     <tbody>
     <?php
         foreach ($this->entries as $r) {
+            $uri     = parent::generateUri('operationsLog.view', ['id'=>$r->id]);
+            $logtime = "<a href=\"$uri\">{$r->logtime->format('g a')}</a>";
             echo "
-            <tr><th>{$r->logtime->format('g a')}</th>
+            <tr><th>$logtime</th>
                 <td>{$r->weather_temperature   }</td>
                 <td>{$r->weather_conditions    }</td>
                 <td>{$r->weather_precipitation }</td>
