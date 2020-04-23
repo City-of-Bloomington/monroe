@@ -64,5 +64,11 @@ create table operations (
     uv_254_finish          decimal(4, 3),
     bench_ntu              decimal(3, 2),
 
+    flow_basin             smallint unsigned,
+    flow_finish            smallint unsigned,
+    log_removal            decimal(4, 2),
+    toc_raw                decimal(4, 2),
+    toc_finish             decimal(4, 2),
+
     comments               varchar(128)
 );

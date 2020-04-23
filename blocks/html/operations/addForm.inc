@@ -172,7 +172,7 @@ $entry = $this->logEntry;
                 echo $h->field([
                     'name'    => 'chlorine_clrwll_total',
                     'id'      => 'chlorine_clrwll_total',
-                    'label'   => 'clrwll Total',
+                    'label'   => 'Clear Well Total',
                     'type'    => 'number',
                     'value'   => $entry->chlorine_clrwll_total,
                     'attr'    => ['step' => .1]
@@ -233,7 +233,7 @@ $entry = $this->logEntry;
                 echo $h->field([
                     'name'    => 'ph_clrwll',
                     'id'      => 'ph_clrwll',
-                    'label'   => 'pH clrwll',
+                    'label'   => 'pH Clear Well',
                     'type'    => 'number',
                     'value'   => $entry->ph_clrwll,
                     'attr'    => ['step' => .1]
@@ -286,7 +286,7 @@ $entry = $this->logEntry;
                 echo $h->field([
                     'name'    => 'temperature_clrwll',
                     'id'      => 'temperature_clrwll',
-                    'label'   => 'clrwll',
+                    'label'   => 'Clear Well',
                     'type'    => 'number',
                     'value'   => $entry->temperature_clrwll,
                     'attr'    => ['step' => .1]
@@ -439,6 +439,61 @@ $entry = $this->logEntry;
                     'label'   => 'Bench NTU',
                     'type'    => 'number',
                     'value'   => $entry->bench_ntu,
+                    'attr'    => ['step' => .01]
+                ]);
+            ?>
+        </fieldset>
+        <fieldset>
+            <legend>Flow</legend>
+            <?php
+                echo $h->field([
+                    'name'    => 'flow_basin',
+                    'id'      => 'flow_basin',
+                    'label'   => 'Basin',
+                    'type'    => 'number',
+                    'value'   => $entry->flow_basin,
+                    'attr'    => ['step' => 1]
+                ]);
+                echo $h->field([
+                    'name'    => 'flow_finish',
+                    'id'      => 'flow_finish',
+                    'label'   => 'Finish',
+                    'type'    => 'number',
+                    'value'   => $entry->flow_finish,
+                    'attr'    => ['step' => 1]
+                ]);
+            ?>
+        </fieldset>
+        <fieldset>
+            <legend>Log Removal</legend>
+            <?php
+                echo $h->field([
+                    'name'    => 'log_removal',
+                    'id'      => 'log_removal',
+                    'label'   => 'Log Removal',
+                    'type'    => 'number',
+                    'value'   => $entry->log_removal,
+                    'attr'    => ['step' => .01]
+                ]);
+            ?>
+        </fieldset>
+        <fieldset>
+            <legend>Total Organic Carbon</legend>
+            <?php
+                echo $h->field([
+                    'name'    => 'toc_raw',
+                    'id'      => 'toc_raw',
+                    'label'   => 'Raw',
+                    'type'    => 'number',
+                    'value'   => $entry->toc_raw,
+                    'attr'    => ['step' => .01]
+                ]);
+                echo $h->field([
+                    'name'    => 'toc_finish',
+                    'id'      => 'toc_finish',
+                    'label'   => 'Finish',
+                    'type'    => 'number',
+                    'value'   => $entry->toc_finish,
                     'attr'    => ['step' => .01]
                 ]);
             ?>

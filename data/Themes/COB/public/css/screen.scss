@@ -22,7 +22,13 @@
 #logtable {
     th { text-align: center; }
     th, td { border: 1px solid black; min-width: 1em; }
-    .subheadings th  { writing-mode: vertical-rl; text-orientation: mixed; }
+
+    .subheadings th, th[rowspan="3"]  {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        vertical-align: middle;
+    }
+
     thead .time, tbody th { width:50px; }
     tbody tr:nth-child(odd) { background-color: $color-table-background; }
 }

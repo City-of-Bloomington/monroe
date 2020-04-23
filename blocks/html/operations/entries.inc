@@ -21,6 +21,9 @@ declare (strict_types=1);
     <colgroup span="1" class="stability" />
     <colgroup span="3" class="uv254" />
     <colgroup span="1" class="benchNTU" />
+    <colgroup snap="2" class="flow" />
+    <colgroup span="1" class="logRemoval" />
+    <colgroup span="2" class="toc" />
     <colgroup span="1" class="comments" />
 
     <thead>
@@ -38,6 +41,9 @@ declare (strict_types=1);
             <th rowspan= "3" scope="col"     >Stability</th>
             <th colspan= "3" scope="colgroup">UV 254</th>
             <th rowspan= "3" scope="col"     >Bench NTU</th>
+            <th colspan= "2" scope="colgroup">Flow</th>
+            <th rowspan= "3" scope="col"     >Log Removal</th>
+            <th colspan= "2" scope="colgroup">Total Organic Carbon</th>
             <th rowspan= "3" scope="col"     >Comments</th>
         </tr>
         <tr class="subheadings">
@@ -76,19 +82,32 @@ declare (strict_types=1);
             <th rowspan="2">Clrwll</th>
             <th rowspan="2">Finish</th>
 
+            <!-- Fluoride -->
             <th rowspan="2">Finish</th>
 
+            <!-- Hardness -->
             <th rowspan="2">Raw</th>
             <th rowspan="2">Finish</th>
+            <!-- Alkalinity -->
             <th rowspan="2">Raw</th>
             <th rowspan="2">Finish</th>
+            <!-- Odor -->
             <th rowspan="2">Raw</th>
             <th rowspan="2">Finish</th>
+            <!-- Chloride -->
             <th rowspan="2">Raw</th>
             <th rowspan="2">Finish</th>
 
+            <!-- UV 254 -->
             <th rowspan="2">Raw</th>
             <th rowspan="2">Box</th>
+            <th rowspan="2">Finish</th>
+
+            <!-- Flow -->
+            <th rowspan="2">Basin</th>
+            <th rowspan="2">Finish</th>
+            <!-- TOC -->
+            <th rowspan="2">Raw</th>
             <th rowspan="2">Finish</th>
         </tr>
         <tr>
@@ -157,6 +176,11 @@ declare (strict_types=1);
                 <td>{$r->uv_254_box            }</td>
                 <td>{$r->uv_254_finish         }</td>
                 <td>{$r->bench_ntu             }</td>
+                <td>{$r->flow_basin            }</td>
+                <td>{$r->flow_finish           }</td>
+                <td>{$r->log_removal           }</td>
+                <td>{$r->toc_raw               }</td>
+                <td>{$r->toc_finish            }</td>
                 <td>{$r->comments              }</td>
             </tr>
             ";

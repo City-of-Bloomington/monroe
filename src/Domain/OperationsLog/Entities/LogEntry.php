@@ -64,6 +64,12 @@ class LogEntry
     public $uv_254_finish;
     public $bench_ntu;
 
+    public $flow_basin;
+    public $flow_finish;
+    public $log_removal;
+    public $toc_raw;
+    public $toc_finish;
+
     public $comments;
 
     public function __construct(?array $data=null)
@@ -108,6 +114,9 @@ class LogEntry
                     case 'uv_254_box':
                     case 'uv_254_finish':
                     case 'bench_ntu':
+                    case 'log_removal':
+                    case 'toc_raw':
+                    case 'toc_finish':
                         if ($data[$k] != '') {
                             $this->$k = (float)$data[$k];
                         }
@@ -124,6 +133,8 @@ class LogEntry
                     case 'hardness_finish':
                     case 'alkalinity_raw':
                     case 'alkalinity_finish':
+                    case 'flow_basin':
+                    case 'flow_finish':
                         if ($data[$k] != '') {
                             $this->$k = (int)$data[$k];
                         }
