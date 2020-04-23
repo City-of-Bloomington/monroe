@@ -15,11 +15,10 @@ $ROUTES->add('login.logout',  '/logout' )->setValues(['controller' => 'Web\Authe
 
 $ROUTES->attach('operationsLog', '/operations', function ($r) {
     $r->add('add',    '/add')         ->setValues(['controller' => 'Web\OperationsLog\Controllers\AddController'   ]);
+    $r->add('update', '/{id}/update') ->setValues(['controller' => 'Web\OperationsLog\Controllers\UpdateController']);
     $r->add('view',   '/{id}')        ->setValues(['controller' => 'Web\OperationsLog\Controllers\ViewController'  ]);
     $r->add('index',  '')             ->setValues(['controller' => 'Web\OperationsLog\Controllers\ListController'  ]);
 });
-$ROUTES->add('operationsLog.index', '/operations'  )->setValues(['controller' => 'Web\OperationsLog\Controllers\ListController']);
-
 
 $ROUTES->attach('people', '/people', function ($r) {
     $r->add('update', '/update{/id}') ->setValues(['controller' => 'Web\People\Controllers\UpdateController']);

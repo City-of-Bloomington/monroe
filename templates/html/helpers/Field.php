@@ -40,6 +40,13 @@ class Field extends Helper
                     $renderInput = 'input';
                 break;
 
+                case 'datetime-local':
+                    $params['value'] = !empty($params['value']) ? $params['value']->format('Y-m-d\TH:i') : '';
+                    $params['attr']['placeholder'] = View::translateDateString('Y-m-dTH:i');
+                    $params['attr']['pattern'    ] = "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}";
+                    $renderInput = 'input';
+                break;
+
                 case 'select':
                 case 'textarea':
                 case 'radio':

@@ -28,5 +28,6 @@ $ACL->allow(null, 'login');
 $ACL->allow(null, 'operationsLog', ['index', 'view']);
 
 $ACL->allow('Staff',      'operationsLog', 'add');
+$ACL->allow('Supervisor', 'operationsLog');
 
 $ACL->allow('Administrator');

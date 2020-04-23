@@ -79,19 +79,25 @@ abstract class PdoRepository
             $id = $data[$pk];
             unset($data[$pk]);
 
-            $update = $this->queryFactory->newUpdate();
+            $update  = $this->queryFactory->newUpdate();
             $update->table($table)->cols($data)->where("$pk=?", $id);
-            $query = $this->pdo->prepare($update->getStatement());
-            $query->execute($update->getBindValues());
-            return $id;
+            $query   = $this->pdo->prepare($update->getStatement());
+            $success = $query->execute($update->getBindValues());
+            if ($success) {
+                return (int)$id;
+            }
+            else {
+                $e = $query->errorInfo();
+                throw new \Exception($e[2]);
+            }
         }
         else {
             // Insert
             unset($data[$pk]);
 
-            $insert = $this->queryFactory->newInsert();
+            $insert  = $this->queryFactory->newInsert();
             $insert->into($table)->cols($data);
-            $query = $this->pdo->prepare($insert->getStatement());
+            $query   = $this->pdo->prepare($insert->getStatement());
             $success = $query->execute($insert->getBindValues());
             if ($success) {
                 $id = $insert->getLastInsertIdName($pk);

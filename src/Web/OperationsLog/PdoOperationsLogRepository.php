@@ -80,8 +80,16 @@ class PdoOperationsLogRepository extends PdoRepository implements OperationsLogR
     //---------------------------------------------------------------
     public function save(LogEntry $logEntry): int
     {
-        $data            = (array)$logEntry;
-        $data['logtime'] = $logEntry->logtime->format(self::LOGTIME_FORMAT);
+        foreach ((array)$logEntry as $k=>$v) {
+            switch ($k) {
+                case 'logtime':
+                    $data[$k] = $logEntry->logtime->format(self::LOGTIME_FORMAT);
+                break;
+
+                default:
+                    $data[$k] = $v ? $v : null;
+            }
+        }
         return parent::saveToTable($data, self::TABLE);
     }
 

@@ -5,10 +5,22 @@
  * @param LogEntry $this->logEntry
  */
 declare (strict_types=1);
+
+use Web\Block;
 ?>
 <section>
     <header>
         <h1><?= $this->logEntry->logtime->format('F jS, Y'); ?></h1>
+        <?php
+            if (parent::isAllowed('operationsLog', 'update')) {
+                $block = new Block('toolbox.inc', ['actions' => [
+                    'edit' => ['uri'   => parent::generateUri('operationsLog.update', ['id'=>$this->logEntry->id]),
+                              'class' => 'edit',
+                              'help'  => 'Edit this log entry']
+                ]]);
+                echo $block->render('html', $this->template);
+            }
+        ?>
     </header>
     <details>
         <summary>Weather</summary>
