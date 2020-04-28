@@ -11,14 +11,24 @@
 declare (strict_types=1);
 use Web\Block;
 
-$h = $this->template->getHelper('field');
+$day       = new \DateInterval('P1D');
+$yesterday = clone($this->date); $yesterday->sub($day);
+$tomorrow  = clone($this->date);  $tomorrow->add($day);
+$uri       = parent::generateUri('operationsLog.index');
+$back      = "$uri?date=".$yesterday->format('Y-m-d');
+$next      = "$uri?date=". $tomorrow->format('Y-m-d');
+
+$date = $this->date->format('F j, Y');
+
 ?>
-<section>
+<section id="findForm">
     <header>
-        <h1>Operations</h1>
+        <h1><?= $date; ?></h1>
         <form method="get">
             <fieldset>
+                <a href="<?= $back; ?>" class="back">Back</a>
                 <?php
+                    $h = $this->template->getHelper('field');
                     echo $h->field([
                         'name'  => 'date',
                         'id'    => 'date',
@@ -26,7 +36,9 @@ $h = $this->template->getHelper('field');
                         'value' => $this->date
                     ]);
                 ?>
-                <button type="submit">Submit</button>
+                <button type="submit">Go</button>
+                <a href="<?= $next; ?>" class="next">Next</a>
+                <a href="<?= $uri;  ?>">Today</a>
             </fieldset>
         </form>
         <?php
